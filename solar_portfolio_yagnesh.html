@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solar-Powered Water Filtration System — Created by Yagnesh Dikshit</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+  --bg:#f7fbff; --card:#ffffff; --accent:#0b74d1; --accent-2:#00b4d8;
+  --muted:#556077; --glass: rgba(255,255,255,0.85);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:'Poppins',sans-serif; background:linear-gradient(180deg,var(--bg),#eef8ff);
+  color:#0f1724; -webkit-font-smoothing:antialiased;
+}
+header{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff; padding:48px 20px; text-align:center; position:sticky; top:0; z-index:50;
+  box-shadow:0 6px 20px rgba(2,6,23,0.12);
+}
+header h1{font-size:2rem;margin:0}
+header p{margin-top:6px; opacity:0.95}
+
+.container{max-width:1100px;margin:34px auto;padding:0 18px}
+.card{background:var(--card);border-radius:12px;padding:22px;margin-bottom:20px;box-shadow:0 8px 30px rgba(2,6,23,0.06);opacity:0;transform:translateY(18px);transition:all 700ms cubic-bezier(.2,.9,.25,1)}
+.card.visible{opacity:1;transform:none}
+h2{color:var(--accent);margin:0 0 12px;font-size:1.25rem}
+.lead{color:var(--muted);line-height:1.65}
+
+.row{display:flex;flex-wrap:wrap;gap:18px}
+.col{flex:1;min-width:260px}
+.col-2{flex:2;min-width:300px}
+
+.hero{display:flex;gap:20px;align-items:center}
+.hero .text{flex:1}
+.visual{
+  width:200px;height:140px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -30px 60px rgba(0,0,0,0.03)
+}
+.badge{display:inline-block;background:rgba(255,255,255,0.12);padding:6px 10px;border-radius:999px;margin-top:12px;color:white;font-weight:600;font-size:0.9rem}
+
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.stat{background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:12px 14px;min-width:150px;text-align:center;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+.stat h3{margin:0;font-size:1.2rem;color:var(--accent)}
+.stat p{margin:4px 0 0;color:var(--muted);font-size:0.9rem}
+
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:16px}
+.chart-box{padding:12px;background:linear-gradient(180deg,#fff,#fcfeff);border-radius:10px}
+
+.swot{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.swot .item{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfeff)}
+
+.table {width:100%;border-collapse:collapse;margin-top:12px}
+.table th, .table td{padding:10px;border:1px solid #eef4fb;text-align:left}
+.table th{background:#f0f9ff;color:#064a7a}
+
+.footer{margin-top:30px;background:linear-gradient(90deg,#0b74d1,#0086c9);color:white;padding:18px;text-align:center;border-radius:8px}
+
+.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:none;font-weight:600;cursor:pointer}
+.btn.alt{background:transparent;color:var(--accent);border:1px solid rgba(11,116,209,0.12)}
+
+@media(max-width:720px){
+  .hero{flex-direction:column;align-items:flex-start}
+  header h1{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Solar-Powered Water Filtration System</h1>
+  <p>Created by <strong>Yagnesh Dikshit</strong></p>
+</header>
+
+<div class="container">
+
+  <!-- Intro -->
+  <section class="card" id="intro">
+    <div class="hero">
+      <div class="text">
+        <h2>Executive Summary</h2>
+        <p class="lead">
+          The Solar-Powered Water Filtration System is a community-focused innovation that combines photovoltaic energy and multi-stage filtration to deliver safe drinking water in off-grid and energy-constrained regions. This portfolio documents the problem definition, hypothesis testing, MVP development, user feedback, SWOT analysis, and my decision-making improvement journey.
+        </p>
+        <div class="stats">
+          <div class="stat"><h3 id="s1">2.2B+</h3><p>People lacking safe water</p></div>
+          <div class="stat"><h3 id="s2">20–25 L/hr</h3><p>Average output (pilot)</p></div>
+          <div class="stat"><h3 id="s3">87%</h3><p>Pilot interest</p></div>
+        </div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00b4d8"/><stop offset="1" stop-color="#0078d7"/></linearGradient></defs>
+          <rect x="6" y="6" width="148" height="108" rx="12" fill="url(#g1)" opacity="0.95"/>
+          <g transform="translate(12,12)" fill="#fff" opacity="0.95">
+            <rect x="0" y="0" width="56" height="28" rx="6"/>
+            <rect x="66" y="0" width="76" height="28" rx="6"/>
+            <rect x="0" y="38" width="142" height="72" rx="8" fill-opacity="0.06"/>
+            <circle cx="72" cy="74" r="18" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market & Problem -->
+  <section class="card" id="market">
+    <h2>Market & Problem</h2>
+    <p class="lead">
+      More than <strong>2.2 billion</strong> people worldwide lack safely managed drinking water. In many regions, power availability is low or unreliable, making electric or fuel-based filtration impractical. This product targets rural households, community centers, NGOs, and schools that need reliable, low-cost clean water solutions.
+    </p>
+
+    <div class="row">
+      <div class="col">
+        <div class="card" style="padding:14px">
+          <h3 style="margin:0 0 8px">Customer Jobs • Pains • Gains</h3>
+          <p><strong>Jobs:</strong> Access potable water, reduce monthly water spending, ensure safety for children and elderly.</p>
+          <p><strong>Pains:</strong> Contaminated sources, unreliable grids, high operation costs.</p>
+          <p><strong>Expected Gains:</strong> Dependable supply, health improvement, lower long-term cost.</p>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="chart-box">
+          <h3 style="margin:0 0 8px">Sample Regional Need (Millions)</h3>
+          <canvas id="regionalBar"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="card" id="solution">
+    <h2>Solution & MVP</h2>
+    <p class="lead">
+      The MVP integrates a 150W solar array, a modular multi-stage filtration stack (sediment -> activated carbon -> UV -> polishing membrane), optional small battery storage, and a simple LED status panel. The design prioritizes durability, low maintenance, and local serviceability.
+    </p>
+
+    <div class="row">
+      <div class="col">
+        <h3 style="margin-top:0">Key MVP Components</h3>
+        <ul>
+          <li>Solar array (150W nominal) with regulator</li>
+          <li>Multi-stage cartridge filters (field-replaceable)</li>
+          <li>UV disinfection module</li>
+          <li>12V backup battery option</li>
+          <li>Simple indicators and maintenance guide</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3 style="margin-top:0">Performance Targets</h3>
+        <table class="table">
+          <tr><th>Metric</th><th>Target</th></tr>
+          <tr><td>Filtration output</td><td>20–25 L/hour</td></tr>
+          <tr><td>TDS reduction</td><td>>85%</td></tr>
+          <tr><td>Uptime</td><td>>95% (with battery)</td></tr>
+          <tr><td>Filter lifespan</td><td>3–6 months (modular)</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data & charts -->
+  <section class="card" id="data">
+    <h2>Data, Pilot Results & Analysis</h2>
+    <p class="lead">Pilot tests (n=48 households, 3 villages) collected water quality data, user feedback, and operational metrics. The charts below summarize the key findings used to iterate the MVP.</p>
+
+    <div class="charts">
+      <div class="chart-box">
+        <h4 style="margin:0 0 8px">Before vs After — Water Quality</h4>
+        <canvas id="impactChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4 style="margin:0 0 8px">User Satisfaction (Pilot)</h4>
+        <canvas id="satisfactionPie"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4 style="margin:0 0 8px">Cost Comparison (5-year)</h4>
+        <canvas id="costLine"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4 style="margin:0 0 8px">SWOT Snapshot (Radar)</h4>
+        <canvas id="swotRadar"></canvas>
+      </div>
+    </div>
+
+    <p style="margin-top:12px;color:var(--muted)">Analysis notes: Regression analyses showed a strong positive correlation (R² ~0.78) between solar irradiance and hourly output; satisfaction correlated primarily with perceived water taste and maintenance ease.</p>
+  </section>
+
+  <!-- Experiment & P/M Fit -->
+  <section class="card" id="experiment">
+    <h2>Product/Market Fit Experiment</h2>
+    <p class="lead">The experiment tested adoption, technical reliability, and pricing sensitivity. Key outcomes informed an iteration strategy.</p>
+
+    <div class="row">
+      <div class="col">
+        <h3 style="margin-top:0">Key Outcomes</h3>
+        <ul>
+          <li>Water clarity and pathogen reduction met WHO thresholds in pilot tests.</li>
+          <li>87% of households indicated willingness to adopt at ≤ $250/unit (community pricing).</li>
+          <li>Main barriers: long-term durability, filter supply logistics, and initial cost.</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 style="margin-top:0">Decision: Iterate</h3>
+        <p>Rather than pivot, the evidence supports iterating the MVP. Planned iterations include stronger casings, cartridge redesign, small local assembly, and a battery-backed regulator for cloudy conditions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SWOT -->
+  <section class="card" id="swot">
+    <h2>SWOT Analysis</h2>
+    <div class="swot">
+      <div class="item"><strong>Strengths</strong><p>Renewable, measurable health impact, modular design, strong pilot interest.</p></div>
+      <div class="item"><strong>Weaknesses</strong><p>Upfront cost, supply-chain for cartridges, sunlight variability.</p></div>
+      <div class="item"><strong>Opportunities</strong><p>NGO partnerships, local manufacturing, school and clinic pilots.</p></div>
+      <div class="item"><strong>Threats</strong><p>Cheaper non-renewable filters, funding cuts, regulatory hurdles.</p></div>
+    </div>
+  </section>
+
+  <!-- Decision making -->
+  <section class="card" id="decision">
+    <h2>Decision-Making Growth & Improvement Proposal</h2>
+    <p class="lead">I tracked personal decision metrics across the project and formalized an improvement proposal aimed at making faster, evidence-based choices moving forward.</p>
+
+    <h3>Self-Awareness Dashboard</h3>
+    <table class="table">
+      <tr><th>Skill</th><th>Before</th><th>After</th><th>Plan</th></tr>
+      <tr><td>Analytical Thinking</td><td>5/10</td><td>9/10</td><td>Use dashboards & thresholds</td></tr>
+      <tr><td>Bias Recognition</td><td>4/10</td><td>8/10</td><td>Peer review & red-team analysis</td></tr>
+      <tr><td>Risk Assessment</td><td>3/10</td><td>7/10</td><td>Formal cost-risk matrices</td></tr>
+      <tr><td>Experimentation</td><td>2/10</td><td>8/10</td><td>Run micro-experiments</td></tr>
+    </table>
+
+    <h3 style="margin-top:12px">Improvement Proposal</h3>
+    <ol>
+      <li>Maintain a decision log including hypotheses and metrics.</li>
+      <li>Run A/B micro-experiments for design choices (cartridge vs membrane variants).</li>
+      <li>Integrate basic IoT telemetry to inform maintenance schedules.</li>
+      <li>Partner with local organizations to reduce distribution friction.</li>
+    </ol>
+  </section>
+
+  <!-- Next steps -->
+  <section class="card" id="next">
+    <h2>Roadmap & Closing Reflections</h2>
+    <p class="lead">The next 12 months focus on scaled pilots, partnerships, local assembly, and refined cost models to achieve social impact at scale.</p>
+
+    <div class="row">
+      <div class="col">
+        <h4>12-Month Roadmap</h4>
+        <ol>
+          <li>Deploy 10 pilot units in diverse climates.</li>
+          <li>Implement IoT monitoring for 50% of pilots.</li>
+          <li>Secure two NGO partners for scale trials.</li>
+          <li>Reduce BOM cost by 20% via local sourcing.</li>
+        </ol>
+      </div>
+      <div class="col">
+        <h4>Impact Goals</h4>
+        <ul>
+          <li>Reduce waterborne disease reports by 30% in pilots.</li>
+          <li>Achieve 80%+ user retention at 6 months.</li>
+          <li>Create training jobs for local maintenance teams.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top</button>
+      <button class="btn alt" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">© 2025 — Created by <strong>Yagnesh Dikshit</strong></div>
+
+<script>
+// Reveal on scroll
+function reveal() {
+  document.querySelectorAll('.card').forEach(card=>{
+    const r = card.getBoundingClientRect();
+    if(r.top < window.innerHeight - 80) card.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', ()=>{ reveal(); animateStats(); });
+
+// Stat counters
+function animateStats(){
+  const targets = [2200000000, 22, 87];
+  const elems = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3')];
+  elems.forEach((el,i)=>{
+    let start=0, end=targets[i], duration=1200, startTime=null;
+    function step(ts){
+      if(!startTime) startTime=ts;
+      const prog = Math.min((ts-startTime)/duration,1);
+      const cur = Math.floor(prog*end);
+      if(i===0) el.innerText = cur.toLocaleString();
+      else if(i===1) el.innerText = Math.round(cur)+' L/hr';
+      else el.innerText = Math.round(cur)+'%';
+      if(prog<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// Charts
+const regionalCtx = document.getElementById('regionalBar').getContext('2d');
+new Chart(regionalCtx, {
+  type:'bar',
+  data:{
+    labels:['South Asia','Sub-Saharan Africa','Latin America','Southeast Asia'],
+    datasets:[{label:'Millions lacking safe water',data:[650,700,120,350],backgroundColor:['#0078d7','#00b4d8','#16a34a','#f59e0b']}]
+  },
+  options:{responsive:true,plugins:{legend:{display:false}}}
+});
+
+const impactCtx = document.getElementById('impactChart').getContext('2d');
+new Chart(impactCtx,{
+  type:'bar',
+  data:{
+    labels:['TDS (ppm)','Turbidity (NTU)','E. coli (CFU/100mL)'],
+    datasets:[
+      {label:'Before',data:[650,8.1,220],backgroundColor:'rgba(220,38,38,0.85)'},
+      {label:'After',data:[80,0.65,6],backgroundColor:'rgba(34,197,94,0.9)'}
+    ]
+  },
+  options:{responsive:true}
+});
+
+const satCtx = document.getElementById('satisfactionPie').getContext('2d');
+new Chart(satCtx,{
+  type:'pie',
+  data:{labels:['Very satisfied','Somewhat','Neutral','Unsatisfied'],datasets:[{data:[55,32,8,5],backgroundColor:['#00b4d8','#0078d7','#fde68a','#fca5a5']}]}
+});
+
+const costCtx = document.getElementById('costLine').getContext('2d');
+new Chart(costCtx,{
+  type:'line',
+  data:{
+    labels:['Year1','Year2','Year3','Year4','Year5'],
+    datasets:[
+      {label:'Solar total cost ($)',data:[300,340,370,390,410],borderColor:'#0078d7',fill:false,tension:0.3},
+      {label:'Diesel/generator cost ($)',data:[440,560,690,820,960],borderColor:'#f59e0b',fill:false,tension:0.3}
+    ]
+  },
+  options:{responsive:true}
+});
+
+const swotCtx = document.getElementById('swotRadar').getContext('2d');
+new Chart(swotCtx,{
+  type:'radar',
+  data:{labels:['Strengths','Weaknesses','Opportunities','Threats'],datasets:[{label:'Intensity',data:[8,5,7,4],backgroundColor:'rgba(0,180,216,0.12)',borderColor:'#00b4d8'}]},
+  options:{responsive:true,scales:{r:{beginAtZero:true,max:10}}}
+});
+</script>
+
+</body>
+</html>
